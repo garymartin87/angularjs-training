@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class=""><!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Título del documento</title>
+	<meta content="Nombre del Autor" name="author" />
+	<meta content="Descripción de la página" name="description" />
+	<meta content="etiqueta1, etiqueta2, etiqueta3" name="keywords" />
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+	<script src="my-angular.js"></script>
+</head>
+<body ng-app="app">
+	<div class="row">
+		<div class="col-lg-6">
+
+			
+			<div ng-controller="MessageController">
+			  <panel title="Static text in the client template">
+			    <h3>
+			      <em>Hello</em>, from <strong>{{message}}</strong>
+			    </h3>
+			    <input class="form-control" ng-model="message"> 
+			  </panel>
+			</div>
+
+
+		</div>
+	</div>
+
+</body>
+</html>

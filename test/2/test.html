@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class=""><!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Título del documento</title>
+	<meta content="Nombre del Autor" name="author" />
+	<meta content="Descripción de la página" name="description" />
+	<meta content="etiqueta1, etiqueta2, etiqueta3" name="keywords" />
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+	<script src="my-angular.js"></script>
+</head>
+<body ng-app="app">
+
+	<p ng-controller="ItemsController">
+	  <models-table models="items" columns="name,color,price"></models-table>
+	</p>
+
+</body>
+</html>

@@ -11,7 +11,8 @@ app.directive('modelsTable', function() {
     }
   };
 });
-app.controller('ItemsController', function($scope) {
+app.controller('ItemsController', function($scope, $location) {
+  $scope.path = $location.path;
   $scope.items = [
     {name: 'Item 1', color: 'green', price: 5.0},
     {name: 'Item 2', color: 'blue', price: 4.93}

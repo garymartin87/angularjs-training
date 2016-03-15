@@ -1,7 +1,7 @@
-app.controller('LoginController', function('UsersDataServices') {
-  this.user = {};
+app.controller('LoginController', function(UsersDataServices) {
   
-  this.checkCredentials = function() {
-    console.log(UsersDataServices);
+  this.checkCredentials = function(user) {
+    return UsersDataServices.CheckCredentials(user);
   };
+
 });

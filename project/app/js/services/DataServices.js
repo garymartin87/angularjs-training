@@ -1,48 +1,44 @@
-app.factory('UsersDataService', function(filterFilter) {
+app.factory('UsersDataService', function(filterFilter, $localStorage) {
 	var users = [
 		{
+			"role": "admin",
 			"username": "admin",
 			"password": "root",
 			"name":"Alejandro Martin",
-			"avatar": "admin.jpg",
-			"profile": "admin.jpg",
-			"address": "Viamonte 1581 6° B",
-			"phone": "(0341) 156 158589",
-			"email": "alejandro.martin@globant.com"
 		},
 		{
+			"role": "user",
 			"username": "roberto",
 			"password": "123",
 			"name":"Roberto Garcia",
-			"avatar": "roberto.png",
-			"profile": "roberto.jpg",
-			"address": "Pellegrini 2131",
-			"phone": "(0341) 155 498158",
-			"email": "roberto.garcia@globant.com"
 		},
 		{
+			"role": "user",
 			"username": "juan",
 			"password": "123",
 			"name":"Juan Lopez",
-			"avatar": "juan.jpg",
-			"profile": "juan.jpg",
-			"address": "San Lorenzo 1897",
-			"phone": "(0341) 156 156815",
-			"email": "juan.lopez@globant.com"
 		}
 	];
 
+	if(!$localStorage.users){
+		$localStorage.users = users;
+	}
+
 	return {
 	  query: function(params) {
-	    return filterFilter(users, params);
+	    return filterFilter($localStorage.users, params);
 	  },
 	  get: function(params) {
 	    return this.query(params)[0];
+	  },
+	  register: function(user) {
+	  	$localStorage.users.push(user);
 	  }
 	};
 });
-/*
-app.factory('ComicsDataService', function(filterFilter, $http, urlComicsJson) {
+
+app.factory('ComicsDataService', function(filterFilter, $http, $localStorage, urlComicsJson) {
+
 	var comics = [
 		{
 			"id":"1",
@@ -157,36 +153,19 @@ app.factory('ComicsDataService', function(filterFilter, $http, urlComicsJson) {
 		}
 	];
 
+	if(!$localStorage.comics){
+		$localStorage.comics = comics;
+	}
+
 	return {
 	  query: function(params) {
-	    return filterFilter(comics, params);
+	    return filterFilter($localStorage.comics, params);
 	  },
 	  get: function(params) {
 	    return this.query(params)[0];
+	  },
+	  add: function(comic) {
+	  	$localStorage.comics.push(comic);
 	  }
 	};
-});
-*/
-app.factory('ComicsDataService', function(filterFilter, $http, $q, urlComicsJson) {
-	var comics = [];
-
-	var deferred = $q.defer();
-	
-	deferred.then(function(data){
-		comics = data;
-		return {
-		  query: function(params) {
-		    return filterFilter(comics, params);
-		  },
-		  get: function(params) {
-		    return this.query(params)[0];
-		  }
-		};
-	});
-
-	$http.get(urlComicsJson).success(function(data) {
-    deferred.resolve(data);
-  });
-
-	return deferred.promise;
 });

@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'ngStorage']);
 
 app.value('urlComicsJson', 'http://localhost/angularjs-training/project/data/comics.json');
 
@@ -34,5 +34,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
       data: {
         requireLogin: false
 			}
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'views/register.html',
+      controller: 'RegisterController as registerCtrl',
+      data: {
+        requireLogin: false
+      }
     })
 });

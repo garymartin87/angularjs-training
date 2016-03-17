@@ -34,6 +34,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         requireLogin: false
       }
     })
+    .state('borrowed', {
+      url: '/borrowed',
+      templateUrl: 'views/borrowed.html',
+      controller: 'BorrowedController as borrowedCtrl',
+      data: {
+        requireLogin: false
+      }
+    })
 });
 
 app.run(function($rootScope, $sessionStorage, $state) {

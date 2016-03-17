@@ -9,7 +9,7 @@
     <div id="navbar" class="collapse navbar-collapse">
       
       <ul class="nav navbar-nav navbar-left">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a ng-click="borrowedCtrl.goToHome()">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -18,20 +18,20 @@
         <li class="dropdown navbar-profile">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="meta">
-                <span class="avatar">{{homeCtrl.userLogged.name}}</span>
+                <span class="avatar">{{borrowedCtrl.userLogged.name}}</span>
                 <span class="text hidden-xs hidden-sm text-muted"></span>
                 <span class="caret"></span>
             </span>
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a ng-click="homeCtrl.logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+              <a ng-click="borrowedCtrl.logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
             </li>
             <li>
               <a><i class="glyphicon glyphicon-user"></i> Profile</a>
             </li>
             <li>
-              <a ng-click="homeCtrl.goToMyBorrowedComics()"><i class="glyphicon glyphicon-shopping-cart"></i> My Borrowed Comics</a>
+              <a ng-click="borrowedCtrl.goToMyBorrowedComics()"><i class="glyphicon glyphicon-shopping-cart"></i> My Borrowed Comics</a>
             </li>
             <li>
           </ul>
@@ -49,6 +49,8 @@
 
     <div class="col-xs-12 col-sm-9">
         
+        <a class="btn btn-success borrowed-go-to-home" role="button" ng-click="borrowedCtrl.goToHome();" >Back To Home</a>
+
         <div id="search-container" class="row">
           <div class="col-xs-12 col-md-12">
             <div class="input-group">
@@ -61,17 +63,9 @@
         <div role="main">
           <div class="row">
 
-            <div class="col-xs-4 col-md-4" ng-repeat="comic in homeCtrl.comics | filter: {title: titleFilter, genre: genreFilter} | orderBy:orderByFilter as filteredComics">
+            <div class="col-xs-4 col-md-4" ng-repeat="comic in borrowedCtrl.comics | filter: {title: titleFilter, genre: genreFilter} | orderBy:orderByFilter as filteredComics">
               <div class="thumbnail comic-container">
-                <div style="background-image: url(img/covers/{{comic.cover}});" class="cover">
-                  <div ng-show="homeCtrl.userLogged.role == 'admin'" class="delete-comic-container">
-                    <a class="btn btn-danger" role="button" ng-click="homeCtrl.deleteComic(comic)"><i class="glyphicon glyphicon-trash"></i> Delete</a>
-                  </div>
-                  <div ng-show="homeCtrl.userLogged.role == 'user'" class="loan-comic-container">
-                    <a ng-show="!comic.borrowed" class="btn btn-success" role="button" ng-click="homeCtrl.loanComic(comic)"><i class="glyphicon glyphicon-shopping-cart"></i> Loan</a>
-                    <div ng-show="comic.borrowed" class="alert alert-danger alert-comic-borrowed" role="alert"><i class="glyphicon glyphicon-thumbs-down"></i> Borrowed</div>
-                  </div>
-                </div>
+                <div style="background-image: url(img/covers/{{comic.cover}});" class="cover"></div>
                 <div class="caption">
                   <h3 class="text-center">{{comic.title}}</h3>
                   <div class="stars-container">
@@ -109,26 +103,6 @@
         <option value="-stars">Stars</option>
         <option value="title">Title</option>
       </select>
-
-      <div ng-show="homeCtrl.userLogged.role == 'admin'">
-        <h2 class="title-modifiers">add new</h2>
-        <div class="alert alert-success" role="success" ng-show="homeCtrl.resultAddComic">
-          Comic was added successfully
-        </div>
-        <form ng-submit="homeCtrl.addComic()">
-          <input class="add-new-comic-title" type="text" ng-model="homeCtrl.newComic.title" class="form-control" placeholder="Title" required="" autofocus="" />
-          <textarea class="add-new-comic-description form-control" ng-model="homeCtrl.newComic.description" required="" placeholder="Description"></textarea>
-          <select class="add-new-comic-genre form-control" ng-model="homeCtrl.newComic.genre" required="">
-            <option value="">Genre</option>
-            <option value="action">Action</option>
-            <option value="drama">Drama</option>
-            <option value="superhero">SuperHero</option>
-            <option value="european">European</option>
-          </select>
-          <input type="number" placeholder="stars" class="add-new-comic-stars" ng-model="homeCtrl.newComic.stars" class="form-control" required="" autofocus="" min="1" max="5" step="1"/>
-          <input type="submit" class="btn btn-lg btn-primary btn-block" value="Add Comic" value="Submit" />
-        </form>
-      </div>
 
     </div><!--/.sidebar-offcanvas-->
   </div><!--/row-->

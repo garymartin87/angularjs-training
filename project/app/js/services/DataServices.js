@@ -5,18 +5,21 @@ app.factory('UsersDataService', function(filterFilter, $localStorage) {
 			"username": "admin",
 			"password": "root",
 			"name":"Alejandro Martin",
+			"borrowed": []
 		},
 		{
 			"role": "user",
 			"username": "roberto",
 			"password": "123",
 			"name":"Roberto Garcia",
+			"borrowed": []
 		},
 		{
 			"role": "user",
 			"username": "juan",
 			"password": "123",
 			"name":"Juan Lopez",
+			"borrowed": []
 		}
 	];
 
@@ -33,6 +36,13 @@ app.factory('UsersDataService', function(filterFilter, $localStorage) {
 	  },
 	  register: function(user) {
 	  	$localStorage.users.push(user);
+	  },
+	  loan: function(comic,user) {
+	  	angular.forEach($localStorage.users, function (userF) {
+		    if(userF.username == user.username){
+		    	userF.borrowed.push(comic);
+		    }
+		  });
 	  }
 	};
 });
@@ -46,7 +56,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"1-wolverine.jpg",
 			"genre":"action",
-			"stars": "5",
+			"stars": 5,
 			"borrowed": false
 		},
 		{
@@ -55,7 +65,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"2-daredevil.jpg",
 			"genre":"action",
-			"stars": "5",
+			"stars": 5,
 			"borrowed": false
 		},
 		{
@@ -64,7 +74,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"3-silver.jpg",
 			"genre":"drama",
-			"stars": "4",
+			"stars": 4,
 			"borrowed": false
 		},
 		{
@@ -73,7 +83,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"4-spiderman.jpg",
 			"genre":"superhero",
-			"stars": "4",
+			"stars": 4,
 			"borrowed": false
 		},
 		{
@@ -82,7 +92,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"5-capitan.jpg",
 			"genre":"drama",
-			"stars": "3",
+			"stars": 3,
 			"borrowed": false
 		},
 		{
@@ -91,7 +101,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"6-fantastic.jpg",
 			"genre":"superhero",
-			"stars": "3",
+			"stars": 3,
 			"borrowed": false
 		},
 		{
@@ -100,7 +110,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"7-superman.jpg",
 			"genre":"european",
-			"stars": "3",
+			"stars": 3,
 			"borrowed": false
 		},
 		{
@@ -118,7 +128,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"9-hex.jpg",
 			"genre":"european",
-			"stars": "3",
+			"stars": 3,
 			"borrowed": false
 		},
 		{
@@ -126,7 +136,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"title":"The Incredible Hulk",
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"10-hulk.jpg",
-			"stars": "2",
+			"stars": 2,
 			"borrowed": false
 		},
 		{
@@ -135,7 +145,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"11-inception.jpg",
 			"genre":"action",
-			"stars": "2",
+			"stars": 2,
 			"borrowed": false
 		},
 		{
@@ -144,7 +154,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"12-iron.jpg",
 			"genre":"superheroe",
-			"stars": "2",
+			"stars": 2,
 			"borrowed": false
 		},
 		{
@@ -153,7 +163,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"13-shadow.jpg",
 			"genre":"european",
-			"stars": "1",
+			"stars": 1,
 			"borrowed": false
 		},
 		{
@@ -162,7 +172,7 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"14-detective.jpg",
 			"genre":"action",
-			"stars": "1",
+			"stars": 1,
 			"borrowed": false
 		}
 	];

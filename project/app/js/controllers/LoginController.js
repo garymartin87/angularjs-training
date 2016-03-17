@@ -9,4 +9,8 @@ app.controller('LoginController', function(UsersDataService, $sessionStorage, $s
     	return false;
     }
   };
+
+  this.goToRegister = function() {
+    $state.go('register');
+  }
 });

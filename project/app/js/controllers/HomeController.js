@@ -1,5 +1,17 @@
 app.controller('HomeController', function($scope, ComicsDataService, $sessionStorage, $state) {
   this.comics = ComicsDataService.query();
+  console.log(this.comics);
+  angular.forEach(this.comics, function(value, key) {
+    var starsArray = [];
+    for (var i = 1; i <= value.stars; i++) {
+      console.log("agrega");
+      starsArray.push({i:'s'});
+    }
+    value.stars = starsArray;
+  });
+
+  console.log(this.comics);
+
   this.newComic = {};
   this.userLogged = $sessionStorage.userLogged;
 

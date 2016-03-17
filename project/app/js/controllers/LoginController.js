@@ -1,5 +1,12 @@
-app.controller('LoginController', function(UsersDataService) {
+app.controller('LoginController', function(UsersDataService, $sessionStorage, $state) {
   this.checkCredentials = function(user) {
-    return UsersDataService.get(user);
+    var resultCheckCredentials = UsersDataService.get(user);
+    if(resultCheckCredentials) {
+    	$sessionStorage.userLogged = resultCheckCredentials;
+    	$state.go('home');
+    	return true;
+    } else {
+    	return false;
+    }
   };
 });

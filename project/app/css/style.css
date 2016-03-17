@@ -90,6 +90,31 @@ body {
 }
 
 /* Home */
+.delete-comic-container {
+  padding-top: 65%;
+  text-align: center;
+}
+
+.loan-comic-container {
+  padding-top: 65%;
+  text-align: center; 
+}
+
+.alert-comic-borrowed {
+  margin: 0 auto;
+  width: 50%;
+  font-weight: bolder;
+}
+
+.dropdown-toggle {
+  height: 65px !important;
+  padding-top: 22px !important;
+}
+
+.dropdown-menu > li > a {
+  cursor: pointer !important;
+}
+
 .add-new-comic-title {
   border: 1px solid #e5e6e7;
   border-radius: 1px;

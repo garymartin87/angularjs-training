@@ -7,30 +7,21 @@ app.config(function($locationProvider) {
 });
 
 app.config(function($stateProvider, $urlRouterProvider) {
-  // For any unmatched url
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
-  	.state('index', {
+    .state('home', {
       url: '/',
       templateUrl: 'views/home.html',
       controller: 'HomeController as homeCtrl',
       data: {
-        requireLogin: false
-			}
+        requireLogin: true
+      }
     })
     .state('login', {
       url: '/login',
       templateUrl: 'views/login.html',
       controller: 'LoginController as loginCtrl',
-      data: {
-        requireLogin: false
-			}
-    })
-  	.state('home', {
-      url: '/home',
-      templateUrl: 'views/home.html',
-      controller: 'HomeController as homeCtrl',
       data: {
         requireLogin: false
 			}
@@ -43,4 +34,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         requireLogin: false
       }
     })
+});
+
+app.run(function($rootScope, $sessionStorage, $state) {
+  $rootScope.$on('$stateChangeStart', function (event, toState) {
+    var requireLogin = toState.data.requireLogin;
+    if (requireLogin && !$sessionStorage.userLogged) {
+      event.preventDefault();
+      $state.go('login');
+    }
+  });
 });

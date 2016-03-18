@@ -111,6 +111,18 @@ body {
 }
 
 /* Home */
+.title-comments {
+  margin-top: 15px;
+}
+
+.add-comment-submit {
+  margin-top: 10px;
+}
+
+.add-comment-input {
+  resize: none;
+}
+
 .delete-comic-container {
   padding-top: 65%;
   text-align: center;
@@ -211,7 +223,7 @@ body {
 }
 
 .cover {
-	height: 363px;
+	height: 600px;
 	background-size: cover;
 	background-repeat: no-repeat;
 }

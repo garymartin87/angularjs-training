@@ -28,10 +28,10 @@
               <a ng-click="homeCtrl.logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
             </li>
             <li>
-              <a><i class="glyphicon glyphicon-user"></i> Profile</a>
+              <a ui-sref="profile"><i class="glyphicon glyphicon-user"></i> Profile</a>
             </li>
-            <li>
-              <a ng-click="homeCtrl.goToMyBorrowedComics()"><i class="glyphicon glyphicon-shopping-cart"></i> My Borrowed Comics</a>
+            <li ng-show="homeCtrl.userLogged.role == 'user'">
+              <a ui-sref="borrowed"><i class="glyphicon glyphicon-shopping-cart"></i> My Borrowed Comics</a>
             </li>
             <li>
           </ul>
@@ -61,7 +61,7 @@
         <div role="main">
           <div class="row">
 
-            <div class="col-xs-4 col-md-4" ng-repeat="comic in homeCtrl.comics | filter: {title: titleFilter, genre: genreFilter} | orderBy:orderByFilter as filteredComics">
+            <div class="col-xs-6 col-md-6" ng-repeat="comic in homeCtrl.comics | filter: {title: titleFilter, genre: genreFilter} | orderBy:orderByFilter as filteredComics">
               <div class="thumbnail comic-container">
                 <div style="background-image: url(img/covers/{{comic.cover}});" class="cover">
                   <div ng-show="homeCtrl.userLogged.role == 'admin'" class="delete-comic-container">
@@ -79,9 +79,15 @@
                   </div>
                   <h5>Genre: {{comic.genre | uppercase}}</h5>
                   <p>{{comic.description | limitTo: 100 }}</p>
-                  <p class="text-center">
+                  <!--<p class="text-center">
                     <a role="button" class="btn btn-primary">Details</a>
-                  </p>
+                  </p>-->
+                  <h3 class="title-modifiers title-comments">comments</h3>
+                  <div class="alert alert-info" role="alert" ng-repeat="comment in comic.comments"><i class="glyphicon glyphicon-user"></i> <b>{{comment.user.name}}:</b> {{comment.comment}}</div>
+                  <form ng-submit="homeCtrl.addComment(comic)">
+                    <textarea class="add-comment-input form-control" ng-model="homeCtrl.newComment[comic.id]" required="" placeholder="Description"></textarea>
+                    <input type="submit" class="btn btn-s btn-primary btn-block add-comment-submit" value="Add Comment" />
+                  </form>
                 </div>
               </div>
             </div>

@@ -39,7 +39,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/borrowed.html',
       controller: 'BorrowedController as borrowedCtrl',
       data: {
-        requireLogin: false
+        requireLogin: true
+      }
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'views/profile.html',
+      controller: 'ProfileController as profileCtrl',
+      data: {
+        requireLogin: true
       }
     })
 });

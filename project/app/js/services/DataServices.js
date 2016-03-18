@@ -57,7 +57,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"1-wolverine.jpg",
 			"genre":"action",
 			"stars": 5,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"2",
@@ -66,7 +67,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"2-daredevil.jpg",
 			"genre":"action",
 			"stars": 5,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"3",
@@ -75,7 +77,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"3-silver.jpg",
 			"genre":"drama",
 			"stars": 4,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"4",
@@ -84,7 +87,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"4-spiderman.jpg",
 			"genre":"superhero",
 			"stars": 4,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"5",
@@ -93,7 +97,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"5-capitan.jpg",
 			"genre":"drama",
 			"stars": 3,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"6",
@@ -102,7 +107,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"6-fantastic.jpg",
 			"genre":"superhero",
 			"stars": 3,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"7",
@@ -111,7 +117,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"7-superman.jpg",
 			"genre":"european",
 			"stars": 3,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"8",
@@ -120,7 +127,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"8-green.jpg",
 			"genre":"european",
 			"stars": "3",
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"9",
@@ -129,7 +137,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"9-hex.jpg",
 			"genre":"european",
 			"stars": 3,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"10",
@@ -137,7 +146,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 			"cover":"10-hulk.jpg",
 			"stars": 2,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"11",
@@ -146,7 +156,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"11-inception.jpg",
 			"genre":"action",
 			"stars": 2,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"12",
@@ -155,7 +166,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"12-iron.jpg",
 			"genre":"superheroe",
 			"stars": 2,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"13",
@@ -164,7 +176,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"13-shadow.jpg",
 			"genre":"european",
 			"stars": 1,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		},
 		{
 			"id":"14",
@@ -173,7 +186,8 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 			"cover":"14-detective.jpg",
 			"genre":"action",
 			"stars": 1,
-			"borrowed": false
+			"borrowed": false,
+			"comments": []
 		}
 	];
 
@@ -199,6 +213,10 @@ app.factory('ComicsDataService', function(filterFilter, $localStorage, urlComics
 	  loan: function(comic) {
 	  	var index = $localStorage.comics.indexOf(comic);
 	  	$localStorage.comics[index].borrowed = true;
+	  },
+	  addComment: function(comic,comment,user) {
+	  	var index = $localStorage.comics.indexOf(comic);
+	  	$localStorage.comics[index].comments.push({"user":user,"comment":comment});
 	  }
 	};
 });

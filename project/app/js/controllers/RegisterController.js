@@ -1,4 +1,4 @@
-app.controller('RegisterController', function(UsersDataService,$location, $state, $sessionStorage) {
+app.controller('RegisterController', function(UsersDataService, $state, $sessionStorage) {
 
   this.register = function(user) {
   	this.errorMessages = [];
@@ -26,13 +26,10 @@ app.controller('RegisterController', function(UsersDataService,$location, $state
   	if(!this.errorMessages.length) {
   		delete user.password2;
   		user.role = "user";
+      user.borrowed = [];
   		UsersDataService.register(user);
       $sessionStorage.userLogged = user;
       $state.go('home');
   	}
   };
-
-  this.goToLogin = function() {
-    $state.go('login');
-  }
 });

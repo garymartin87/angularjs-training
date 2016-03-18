@@ -6,10 +6,10 @@
       <a class="navbar-brand" href="index.html">Comics Site</a>
     </div>
 
-    <div id="navbar" class="collapse navbar-collapse">
+    <div id="navbar" class="collapse navbar-collapse" ng-controller="HomeController as homeCtrl">
       
       <ul class="nav navbar-nav navbar-left">
-        <li class="active"><a ng-click="borrowedCtrl.goToHome()">Home</a></li>
+        <li class="active"><a href="#">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -18,20 +18,20 @@
         <li class="dropdown navbar-profile">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="meta">
-                <span class="avatar">{{borrowedCtrl.userLogged.name}}</span>
+                <span class="avatar">{{homeCtrl.userLogged.name}}</span>
                 <span class="text hidden-xs hidden-sm text-muted"></span>
                 <span class="caret"></span>
             </span>
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a ng-click="borrowedCtrl.logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+              <a ng-click="homeCtrl.logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
             </li>
             <li>
-              <a><i class="glyphicon glyphicon-user"></i> Profile</a>
+              <a ui-sref="profile"><i class="glyphicon glyphicon-user"></i> Profile</a>
             </li>
-            <li>
-              <a ng-click="borrowedCtrl.goToMyBorrowedComics()"><i class="glyphicon glyphicon-shopping-cart"></i> My Borrowed Comics</a>
+            <li ng-show="homeCtrl.userLogged.role == 'user'">
+              <a ui-sref="borrowed"><i class="glyphicon glyphicon-shopping-cart"></i> My Borrowed Comics</a>
             </li>
             <li>
           </ul>
@@ -49,7 +49,7 @@
 
     <div class="col-xs-12 col-sm-9">
         
-        <a class="btn btn-success borrowed-go-to-home" role="button" ng-click="borrowedCtrl.goToHome();" >Back To Home</a>
+        <a class="btn btn-success borrowed-go-to-home" role="button" ui-sref="home" >Back To Home</a>
 
         <div id="search-container" class="row">
           <div class="col-xs-12 col-md-12">
@@ -63,7 +63,7 @@
         <div role="main">
           <div class="row">
 
-            <div class="col-xs-4 col-md-4" ng-repeat="comic in borrowedCtrl.comics | filter: {title: titleFilter, genre: genreFilter} | orderBy:orderByFilter as filteredComics">
+            <div class="col-xs-6 col-md-6" ng-repeat="comic in borrowedCtrl.comics | filter: {title: titleFilter, genre: genreFilter} | orderBy:orderByFilter as filteredComics">
               <div class="thumbnail comic-container">
                 <div style="background-image: url(img/covers/{{comic.cover}});" class="cover"></div>
                 <div class="caption">

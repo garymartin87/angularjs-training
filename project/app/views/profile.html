@@ -1,0 +1,65 @@
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    
+    <div class="navbar-header">
+      <img src="img/globant.jpeg" id="logo-globant" />
+      <a class="navbar-brand" href="index.html">Comics Site</a>
+    </div>
+
+    <div id="navbar" class="collapse navbar-collapse" ng-controller="HomeController as homeCtrl">
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown navbar-profile">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="meta">
+                <span class="avatar">{{homeCtrl.userLogged.name}}</span>
+                <span class="text hidden-xs hidden-sm text-muted"></span>
+                <span class="caret"></span>
+            </span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="homeCtrl.logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+            </li>
+            <li>
+              <a ui-sref="profile"><i class="glyphicon glyphicon-user"></i> Profile</a>
+            </li>
+            <li>
+              <a ui-sref="borrowed"><i class="glyphicon glyphicon-shopping-cart"></i> My Borrowed Comics</a>
+            </li>
+            <li>
+          </ul>
+        </li>
+      </ul>
+
+    </div><!-- /.nav-collapse -->
+
+  </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+<div class="container home-container">
+
+  <div class="row row-offcanvas row-offcanvas-right">
+
+    <div class="col-xs-12 col-sm-9">
+      <a class="btn btn-success borrowed-go-to-home" role="button" ui-sref="home" >Back To Home</a>
+      <div class="jumbotron">
+        <h1>{{profileCtrl.userLogged.name}}</h1>
+        <p>Username: {{profileCtrl.userLogged.username}}</p>
+      </div>        
+    </div><!--/.col-xs-12.col-sm-9-->
+
+  </div><!--/row-->
+
+  <hr>
+  <footer>
+    <p>© 2016 Alejandro Martin.</p>
+  </footer>
+
+</div><!--/.container-->

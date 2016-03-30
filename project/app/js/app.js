@@ -2,10 +2,6 @@ var app = angular.module('app', ['ui.router', 'ngStorage']);
 
 app.value('urlComicsJson', 'http://localhost/angularjs-training/project/data/comics.json');
 
-app.config(function($locationProvider) {
-  $locationProvider.html5Mode(true);
-});
-
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
 

@@ -111,6 +111,10 @@ body {
 }
 
 /* Home */
+.img-advertising {
+  width: 100%;
+}
+
 .title-comments {
   margin-top: 15px;
 }

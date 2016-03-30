@@ -16,7 +16,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown navbar-profile">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <a style="cursor: pointer" class="dropdown-toggle" data-toggle="dropdown">
             <span class="meta">
                 <span class="avatar">{{homeCtrl.userLogged.name}}</span>
                 <span class="text hidden-xs hidden-sm text-muted"></span>
@@ -53,13 +53,13 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox" style="width: 100%; margin-top: 65px;">
     <div class="item active">
-      <img src="img/advertisings/advertising1.jpg" alt="advertising 1">
+      <img class="img-advertising" src="img/advertisings/advertising1.jpg" alt="advertising 1">
     </div>
     <div class="item">
-      <img src="img/advertisings/advertising2.jpg" alt="advertising 2">
+      <img class="img-advertising" src="img/advertisings/advertising2.jpg" alt="advertising 2">
     </div>
     <div class="item">
-      <img src="img/advertisings/advertising3.jpg" alt="advertising 3">
+      <img class="img-advertising" src="img/advertisings/advertising3.jpg" alt="advertising 3">
     </div>
   </div>
 
@@ -103,9 +103,6 @@
                   </div>
                   <h5>Genre: {{comic.genre | uppercase}}</h5>
                   <p>{{comic.description | limitTo: 100 }}</p>
-                  <p class="text-center">
-                    <a role="button" class="btn btn-primary">Details</a>
-                  </p>
                 </div>
               </div>
             </div>
